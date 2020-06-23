@@ -1,5 +1,6 @@
-{{- range $i, $client := .Values.clients -}}
-{{- range $j, $env := .Values.envs -}}
+{{- $values := .Values -}}
+{{- range $i, $client := $values.clients -}}
+{{- range $j, $env := $values.envs -}}
 {{- /* Could put common config layers in here as well */ -}}
 {{- $client_env_config := $.Files.Get (printf "client/%s/%s.yaml" $client $env) | fromYaml -}}
 ---
