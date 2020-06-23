@@ -1,13 +1,17 @@
+{{- range $i, $client := $.Values.clients -}}
+{{- range $j, $env := $.Values.envs -}}
+{{- /* Could put common config layers in here as well */ -}}
+{{- $client_env_config := $.Files.Get (printf "client/%s/%s.yaml" $client $env) | fromYaml -}}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: train-dev
-  namespace: dev
+  name: train-{{$env}}
+  namespace: {{ required (printf "Ensure that client/%s/%s.yaml set ns" $client $env) $client_env_config.ns }}
 spec:
 
   destination:
-    namespace: dev
+    namespace: {{ required (printf "Ensure that client/%s/%s.yaml set ns" $client $env) $client_env_config.ns }}
     server: https://kubernetes.default.svc
 
   project: release-train-project
@@ -15,11 +19,13 @@ spec:
   source:
     repoURL: "https://github.com/emarcotte/deployment-config"
     path: ''
-    targetRevision: 1.0.7
+    targetRevision: release
     helm:
       parameters:
         - name: image.tag
-          value: 1.0.7
+          value: {{ required (printf "Ensure that client/%s/%s.yaml set cool_app.version" $client $env) $client_env_config.cool_app.version }}
 
   syncPolicy:
     automated: {}
+{{ end }}{{ end }}
+
