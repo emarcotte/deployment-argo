@@ -14,6 +14,7 @@ spec:
 
   source:
     repoURL: "https://github.com/emarcotte/deployment-config"
+    path: ''
     targetRevision: 1.0.7
     helm:
       parameters:
