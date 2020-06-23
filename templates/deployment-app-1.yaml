@@ -8,7 +8,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: train-{{$env}}
-  namespace: {{ $env }}
+  namespace: {{ $client_env_config.ns }}
+  client_config: {{ include "toYaml" $client_env_config | indent 2 }}
 spec:
 
   destination:
