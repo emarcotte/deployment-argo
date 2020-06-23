@@ -1,0 +1,9 @@
+---
+clients:
+  - joe
+  - bob
+
+envs:
+  - dev
+  - stage
+  - prod

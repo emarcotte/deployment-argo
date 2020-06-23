@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: release-train-project
+  namespace: argocd
+
+spec:
+  description: Project controlling release train deployments.
+
+  # Only allow prod ns syncing (I think?) from 1 to midnight, but not midnight to 1am.
+  # Users can still do manual syncs in CLI or UI.
+  syncWindows:
+  - kind: allow
+    manualSync: true
+    schedule: '0 1 * * *'
+    duration: 23h
+    namespaces:
+    - 'prod'
+
+  # Allow manifests to deploy from any Git repos
+  sourceRepos:
+  - '*'
+
+  # Enables namespace orphaned resource monitoring.
+  orphanedResources:
+    warn: false
+

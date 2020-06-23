@@ -1,0 +1,5 @@
+---
+# hack cause i dont have two real environments
+ns: stage
+cool_app:
+  version: 1.0.6
