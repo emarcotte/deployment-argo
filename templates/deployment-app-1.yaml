@@ -1,6 +1,6 @@
-{{- range $i, $client := .Values.clients }}
-{{- range $j, $env := .Values.envs }}
-{{- /* Could put common config layers in here as well */ }}
+{{- range $i, $client := .Values.clients -}}
+{{- range $j, $env := .Values.envs -}}
+{{- /* Could put common config layers in here as well */ -}}
 {{- $client_env_config := $.Files.Get (printf "client/%s/%s.yaml" $client $env) | fromYaml -}}
 ---
 apiVersion: argoproj.io/v1alpha1
