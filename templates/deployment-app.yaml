@@ -6,7 +6,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: train-{{$env}}
+  name: train-{{$client}}-{{$env}}
   namespace: {{ required (printf "Ensure that client/%s/%s.yaml set ns" $client $env) $client_env_config.ns }}
 spec:
 
@@ -18,7 +18,7 @@ spec:
 
   source:
     repoURL: "https://github.com/emarcotte/deployment-config"
-    path: ''
+    path: 'apps/deployment-app-1/'
     targetRevision: release
     helm:
       parameters:

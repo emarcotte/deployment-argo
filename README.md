@@ -15,3 +15,10 @@ one model. This could be split apart. Since the state in argo tracks versions
 and things like that, we would not have impact to other components for other
 clients when changing a particular component in a particular client.
 
+Debugging is done via helm: `helm2 template . --name train --namespace argocd --kube-version 1.14 --debug`
+
+And also via...:
+
+```
+$ argocd app sync train --local ./
+```
