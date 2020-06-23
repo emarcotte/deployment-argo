@@ -3,7 +3,7 @@
 {{- range $j, $env := $values.envs -}}
 {{- /* Could put common config layers in here as well */ -}}
 {{- $client_env_config := $.Files.Get (printf "client/%s/%s.yaml" $client $env) | fromYaml -}}
----
+{{- /*---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -28,6 +28,7 @@ spec:
 
   syncPolicy:
     automated: {}
+ */ -}}
 
 {{- end }}
 {{- end }}
