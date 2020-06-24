@@ -15,7 +15,7 @@ spec:
     namespace: {{$env}}
     server: https://kubernetes.default.svc
 
-  project: release-train-project
+  project: default # release-train-project
 
   source:
     repoURL: "https://github.com/emarcotte/deployment-config"
