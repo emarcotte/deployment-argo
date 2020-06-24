@@ -31,7 +31,7 @@ spec:
           value: {{ required (printf "Ensure that client/%s/%s.yaml set cool_app.version" $client $env) $client_env_config.cool_app.version }}
         {{ if $client_env_config.cool_app.crash_on_boot }}
         - name: crash_on_boot
-          value: true
+          value: 'hell yeah'
         {{ end }}
 
   syncPolicy:
