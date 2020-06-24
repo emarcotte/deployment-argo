@@ -18,7 +18,7 @@ spec:
 
   source:
     repoURL: "https://github.com/emarcotte/deployment-config"
-    path: 'apps/deployment-app-1/'
+    path: 'apps/deployment-app-1'
     targetRevision: release
     helm:
       parameters:
