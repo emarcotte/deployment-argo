@@ -2,3 +2,4 @@
 ns: joe-stage
 cool_app:
   version: 1.0.7
+  crash_on_boot: true
