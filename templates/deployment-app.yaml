@@ -13,7 +13,7 @@ spec:
 
   destination:
     namespace: {{$env}}
-    server: https://35.222.232.7
+    server: https://kubernetes.default.svc
 
   project: release-train-project
 
