@@ -7,12 +7,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: train-{{$client}}-{{$env}}
-  namespace: {{ required (printf "Ensure that client/%s/%s.yaml set ns" $client $env) $client_env_config.ns }}
+  namespace: argocd
+
 spec:
 
   destination:
-    namespace: {{ required (printf "Ensure that client/%s/%s.yaml set ns" $client $env) $client_env_config.ns }}
-    server: https://kubernetes.default.svc
+    namespace: {{$env}}
+    server: https://35.222.232.7
 
   project: release-train-project
 

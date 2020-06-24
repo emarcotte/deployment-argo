@@ -1,6 +1,6 @@
 clients:
   - joe
-  - bob
+#  - bob
 
 envs:
   - dev
