@@ -1,4 +1,4 @@
 # hack cause i dont have two real environments
-ns: stage
+ns: joe-stage
 cool_app:
   version: 1.0.6

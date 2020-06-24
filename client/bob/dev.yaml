@@ -1,4 +1,4 @@
 ---
-ns: dev
+ns: bob-dev
 cool_app:
   version: 1.0.7

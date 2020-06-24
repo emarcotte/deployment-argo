@@ -1,7 +1,11 @@
-{{- range $i, $client := $.Values.clients -}}
-{{- range $j, $env := $.Values.envs -}}
-{{- /* Could put common config layers in here as well */ -}}
-{{- $client_env_config := $.Files.Get (printf "client/%s/%s.yaml" $client $env) | fromYaml -}}
+{{- range $path, $bytes := $.Files.Glob "client/**.yaml" }}
+{{- $split  := split "/" $path }}
+{{- $client := $split._1 }}
+{{- $env    := $split._2 }}
+{{- $client_env_config := $bytes | toString | fromYaml -}}
+# Config: {{$path}}
+# Client: {{ $client }}
+# Env:    {{ $env }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -12,7 +16,7 @@ metadata:
 spec:
 
   destination:
-    namespace: {{$env}}
+    namespace: {{ $client_env_config.ns }}
     server: https://kubernetes.default.svc
 
   project: default # release-train-project
@@ -28,5 +32,6 @@ spec:
 
   syncPolicy:
     automated: {}
-{{ end }}{{ end }}
+
+{{ end }}
 
