@@ -1,5 +1,5 @@
 # hack cause i dont have two real environments
 ns: joe-stage
 cool_app:
-  version: 1.0.8
+  version: 1.0.11
   crash_on_boot: true
