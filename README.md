@@ -4,11 +4,15 @@ here: https://argoproj.github.io/argo-cd/operator-manual/cluster-bootstrapping/
 Once argo is installed in the cluster, you can slam this into the environment
 with:
 
-``` $ argocd app create train --dest-namespace argocd --dest-server
+```
+
+$ argocd app create train --dest-namespace argocd --dest-server
 https://kubernetes.default.svc --repo
 https://github.com/emarcotte/deployment-argo --path ./
 
-$ argocd app sync train --dry-run ```
+$ argocd app sync train --dry-run
+
+```
 
 The idea of this model is that the entire release train for all clients is in
 one model. This could be split apart. Since the state in argo tracks versions
