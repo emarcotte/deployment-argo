@@ -6,9 +6,7 @@ with:
 
 ```
 
-$ argocd app create train --dest-namespace argocd --dest-server
-https://kubernetes.default.svc --repo
-https://github.com/emarcotte/deployment-argo --path ./
+$ argocd app create train --dest-namespace argocd --dest-server https://kubernetes.default.svc --repo https://github.com/emarcotte/deployment-argo --path ./
 
 $ argocd app sync train --dry-run
 
